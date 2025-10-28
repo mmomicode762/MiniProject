@@ -13,13 +13,13 @@ import java.util.Vector;
         private static final String FILE_NAME = "students.txt";
 
         public StudentManagementFileGUI() {
-            setTitle("🎓 Student Management System");
+            setTitle("Student Management System");
             setSize(700, 500);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLocationRelativeTo(null);
             setLayout(new BorderLayout(10, 10));
 
-            // 🧠 Top panel for inputs
+            // Top panel for inputs
             JPanel inputPanel = new JPanel(new GridLayout(2, 4, 10, 10));
             inputPanel.setBorder(BorderFactory.createTitledBorder("Add New Student"));
 
@@ -37,12 +37,12 @@ import java.util.Vector;
             inputPanel.add(new JLabel("Department:"));
             inputPanel.add(deptField);
 
-            // 🧱 Table setup
+            //  Table setup
             tableModel = new DefaultTableModel(new String[]{"ID", "Name", "Age", "Department"}, 0);
             table = new JTable(tableModel);
             JScrollPane tableScroll = new JScrollPane(table);
 
-            // 🎮 Buttons
+            // Buttons
             JPanel buttonPanel = new JPanel(new FlowLayout());
             JButton addButton = new JButton("Add Student");
             JButton deleteButton = new JButton("Delete Selected");
@@ -53,22 +53,22 @@ import java.util.Vector;
             buttonPanel.add(clearButton);
             buttonPanel.add(saveButton);
 
-            // 🎨 Add to Frame
+            //  Add to Frame
             add(inputPanel, BorderLayout.NORTH);
             add(tableScroll, BorderLayout.CENTER);
             add(buttonPanel, BorderLayout.SOUTH);
 
-            // ⚙️ Button Actions
+            //  Button Actions
             addButton.addActionListener(this::addStudent);
             deleteButton.addActionListener(this::deleteStudent);
             clearButton.addActionListener(e -> clearFields());
             saveButton.addActionListener(e -> saveToFile());
 
-            // 🔄 Load data on startup
+            // Load data on startup
             loadFromFile();
         }
 
-        // ➕ Add student
+        //  Add student
         private void addStudent(ActionEvent e) {
             String id = idField.getText().trim();
             String name = nameField.getText().trim();
@@ -91,7 +91,7 @@ import java.util.Vector;
             JOptionPane.showMessageDialog(this, "✅ Student added & saved successfully!");
         }
 
-        // 🗑️ Delete student
+        //  Delete student
         private void deleteStudent(ActionEvent e) {
             int selectedRow = table.getSelectedRow();
             if (selectedRow != -1) {
@@ -103,7 +103,7 @@ import java.util.Vector;
             }
         }
 
-        // 💾 Save all table data to file
+        //  Save all table data to file
         private void saveToFile() {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
                 for (int i = 0; i < tableModel.getRowCount(); i++) {
@@ -119,7 +119,7 @@ import java.util.Vector;
             }
         }
 
-        // 📂 Load data from file
+        //  Load data from file
         private void loadFromFile() {
             File file = new File(FILE_NAME);
             if (!file.exists()) return; // no file yet
@@ -135,7 +135,7 @@ import java.util.Vector;
             }
         }
 
-        // 🧹 Clear input fields
+        //  Clear input fields
         private void clearFields() {
             idField.setText("");
             nameField.setText("");
@@ -150,5 +150,6 @@ import java.util.Vector;
             });
         }
     }
+
 
 
